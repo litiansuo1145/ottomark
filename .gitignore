@@ -1,0 +1,19 @@
+# 忽略 node_modules
+node_modules/
+
+# 忽略构建产物
+dist/
+build/
+
+# 忽略 Vercel / Netlify 配置
+.vercel/
+.netlify/
+
+# 忽略本地缓存、环境变量、gh-pages缓存
+.env
+.cache/
+*.log
+.DS_Store
+
+# 忽略 GH Pages 缓存目录
+node_modules/.cache/gh-pages/
