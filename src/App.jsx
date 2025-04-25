@@ -77,19 +77,21 @@ export default function App() {
     if (title.trim() === "" || markdown.trim() === "") return;
 
     if (editingNoteId) {
-      // 正在编辑，更新原笔记
-      const { error } = await supabase
-        .from("notes")
-        .update({ title, markdown })
-        .eq("id", editingNoteId);
+  // 正在编辑，更新原笔记
+  const { error } = await supabase
+    .from("notes")
+    .update({ title, markdown })
+    .eq("id", editingNoteId);
 
-      if (!error) {
-        await loadNotes();
-        resetForm();
-      } else {
-        console.error("更新失败：", error.message);
-      }
-    } else {
+  if (!error) {
+    console.log("更新成功 ✅");
+    await loadNotes();
+    resetForm();
+  } else {
+    console.error("更新失败 ❌：", error.message);
+  }
+}
+ else {
       // 新笔记
       const { error } = await supabase.from("notes").insert([{ title, markdown }]);
       if (!error) {
